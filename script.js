@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Clear form and redirect to in.html
                 articleForm.reset();
-                window.location.href = 'in.html';
+                window.location.href = 'index.html';
             } else {
                 alert("Incorrect password! Only admins can add articles.");
             }
         });
     }
 
-    // Display Articles (only on in.html)
+    // Display Articles (only on index.html)
     const articlesContainer = document.getElementById('articlesContainer');
     const noArticlesMessage = document.getElementById('noArticlesMessage');
     if (articlesContainer && noArticlesMessage) {
