@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Article</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light min死了h-screen flex flex-col items-center justify-start p-6">
+    <div class="navbar">
+        <a href="in.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="add-article.html" class="active">Add Article</a>
+    </div>
+    <div class="w-full max-w-3xl">
+        <!-- Header with Theme Toggle -->
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold">Add New Article</h1>
+            <button id="themeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Article Input Form -->
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Write a New Article</h2>
+            <form id="articleForm">
+                <input type="text" id="articleTitle" placeholder="Article Title" class="w-full p-3 mb-4 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <textarea id="articleContent" placeholder="Write your article here..." rows="8" class="w-full p-3 mb-4 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition">Save Article</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
