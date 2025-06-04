@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Declare db in the outer scope
+    let db;
+
     // Initialize Firebase (check if firebase is loaded)
     if (typeof firebase !== 'undefined') {
         const firebaseConfig = {
@@ -10,8 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
             appId: "1:861819296403:web:912e284746affb5cbe4b66"
         };
 
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        try {
+            const app = firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+            console.log("Firestore initialized successfully");
+        } catch (error) {
+            console.error("Firebase initialization failed:", error);
+            alert("Failed to initialize Firebase. Please refresh the page.");
+            return;
+        }
     } else {
         console.error("Firebase SDK not loaded. Check script tags.");
         alert("Firebase failed to load. Please refresh the page.");
@@ -61,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = 'index.html';
                 } catch (error) {
                     console.error("Error saving article:", error);
-                    alert("Error saving article.");
+                    alert("Error saving article: " + error.message);
                 }
             } else {
                 alert("Incorrect password! Only admins can add articles.");
