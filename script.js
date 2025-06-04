@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
         });
     }
-    
+
     // Article Form Handling (only on add-article.html)
     const articleForm = document.getElementById('articleForm');
     if (articleForm) {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const title = document.getElementById('articleTitle').value;
             const content = document.getElementById('articleContent').value;
-            const adminPassword = "admin123"; // Secure this in production
+            const adminPassword = "admin123"; // TODO: Secure this in production with Firebase Authentication
 
             // Prompt for password
             const password = prompt("Please enter the admin password to save the article:");
@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     await db.collection("articles").add({
                         title: title,
                         content: content,
-                        id: Date.now(), // Unique ID
                         createdAt: new Date().toISOString()
                     });
                     alert("Article saved!");
@@ -104,23 +103,30 @@ document.addEventListener('DOMContentLoaded', () => {
                         articlesContainer.appendChild(articleElement);
                     });
 
-                    // Add event listeners to delete buttons
-                    document.querySelectorAll('.delete-btn').forEach(button => {
-                        button.addEventListener('click', async (e) => {
+                    // Event delegation for delete buttons
+                    articlesContainer.addEventListener('click', async (e) => {
+                        if (e.target.classList.contains('delete-btn')) {
+                            e.target.disabled = true; // Disable button during deletion
                             const id = e.target.getAttribute('data-id');
+                            console.log("Deleting article with ID:", id);
                             try {
                                 await db.collection("articles").doc(id).delete();
+                                console.log("Article deleted successfully");
                                 renderArticles(); // Re-render articles
                             } catch (error) {
                                 console.error("Error deleting article:", error);
+                                alert("Failed to delete article: " + error.message);
+                            } finally {
+                                e.target.disabled = false; // Re-enable button
                             }
-                        });
-                    });
+                        }
+                    }, { once: true }); // Ensure listener is added only once
                 } else {
                     noArticlesMessage.style.display = 'block';
                 }
             } catch (error) {
                 console.error("Error loading articles:", error);
+                alert("Failed to load articles: " + error.message);
             }
         };
 
