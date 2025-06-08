@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const title = document.getElementById('articleTitle').value;
             const content = document.getElementById('articleContent').value;
-            const adminPassword = "admin123"; // TODO: Secure this in production with Firebase Authentication
+            const adminPassword = "admin123@34"; // TODO: Secure this in production with Firebase Authentication
 
             // Prompt for password
             const password = prompt("Please enter the admin password to save the article:");
