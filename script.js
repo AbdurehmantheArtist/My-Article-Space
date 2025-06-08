@@ -5,13 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Firebase (check if firebase is loaded)
     if (typeof firebase !== 'undefined') {
         const firebaseConfig = {
-            apiKey: "AIzaSyBKd5uT_ZAqRonOxzKFOkhKJIZ-xBzK9Pg",
-            authDomain: "articlestorage-ed7cd.firebaseapp.com",
-            projectId: "articlestorage-ed7cd",
-            storageBucket: "articlestorage-ed7cd.firebasestorage.app",
-            messagingSenderId: "861819296403",
-            appId: "1:861819296403:web:912e284746affb5cbe4b66"
-        };
+  apiKey: "AIzaSyAeyIVOJQT8iy6U17csyjtjBtMNXpBXHlg",
+  authDomain: "art56-117a1.firebaseapp.com",
+  projectId: "art56-117a1",
+  storageBucket: "art56-117a1.firebasestorage.app",
+  messagingSenderId: "588794156254",
+  appId: "1:588794156254:web:30c2612ffb1d04142d9e4f",
+  measurementId: "G-EWSQYR3MB4"
+};
 
         try {
             const app = firebase.initializeApp(firebaseConfig);
